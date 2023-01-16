@@ -1,0 +1,146 @@
+#VRML_SIM R2023a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/factory/containers/protos/WoodenBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/Floor.proto"
+
+WorldInfo {
+  basicTimeStep 16
+}
+Viewpoint {
+  orientation 0.15419856771869572 0.03969002510653651 -0.987242373290645 2.706408402695626
+  position 1.549312093557476 0.7453565161249385 0.7123117020053986
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 1 1
+}
+WoodenBox {
+  translation -0.43002 0.439644 0.05
+  rotation 0 0 -1 1.58388
+  size 0.1 0.1 0.1
+}
+WoodenBox {
+  translation -0.431607 -0.433637 0.05
+  rotation 0 0 1 4.692820414042842e-06
+  name "wooden box(2)"
+  size 0.1 0.1 0.1
+}
+WoodenBox {
+  translation 0.429027 -0.427583 0.05
+  rotation 0 0 1 4.692820414042842e-06
+  name "wooden box(1)"
+  size 0.1 0.1 0.1
+  mass 0.8
+}
+E-puck {
+  controller "epuck_go_forward"
+}
+Solid {
+  translation 0.2 0 0.2
+  children [
+    Shape {
+      appearance PBRAppearance {
+        roughness 1
+        metalness 0
+      }
+      geometry DEF BALL_GEOMETRY Sphere {
+        radius 0.05
+        subdivision 2
+      }
+    }
+  ]
+  boundingObject USE BALL_GEOMETRY
+  physics Physics {
+  }
+}
+Solid {
+  translation -0.18 0 0.16
+  children [
+    DEF BALL_BULAT Shape {
+      appearance PBRAppearance {
+        roughness 1
+        metalness 0
+      }
+      geometry Sphere {
+        radius 0.05
+        subdivision 2
+      }
+    }
+  ]
+  name "solid(1)"
+  boundingObject USE BALL_BULAT
+  physics Physics {
+  }
+}
+Solid {
+  translation -0.0154731 -0.525658 0.05
+  rotation 0 0 1 -1.5707953071795862
+  children [
+    Shape {
+      appearance PBRAppearance {
+        roughness 1
+        metalness 0
+      }
+      geometry DEF kotak Box {
+        size 0.05 1 0.1
+      }
+    }
+  ]
+  name "solid(2)"
+  boundingObject USE kotak
+}
+Solid {
+  translation -0.0154731 0.524342 0.05
+  rotation 0 0 1 -1.5707953071795862
+  children [
+    Shape {
+      appearance PBRAppearance {
+        roughness 1
+        metalness 0
+      }
+      geometry DEF kotak Box {
+        size 0.05 1 0.1
+      }
+    }
+  ]
+  name "solid(5)"
+  boundingObject USE kotak
+}
+Solid {
+  translation -0.51 0 0.05
+  children [
+    Shape {
+      appearance PBRAppearance {
+        roughness 1
+        metalness 0
+      }
+      geometry DEF kotak Box {
+        size 0.05 1 0.1
+      }
+    }
+  ]
+  name "solid(4)"
+  boundingObject USE kotak
+}
+Solid {
+  translation 0.51 0 0.05
+  children [
+    Shape {
+      appearance PBRAppearance {
+        roughness 1
+        metalness 0
+      }
+      geometry DEF kotak Box {
+        size 0.05 1 0.1
+      }
+    }
+  ]
+  name "solid(3)"
+  boundingObject USE kotak
+}
