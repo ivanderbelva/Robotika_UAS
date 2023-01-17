@@ -10,8 +10,8 @@ WorldInfo {
   basicTimeStep 16
 }
 Viewpoint {
-  orientation 0.23404780797798846 0.32021070250763417 -0.9179796999826662 1.3853331931547102
-  position -0.3553820265092185 1.7066198557536012 1.0447186858629829
+  orientation 0.20535446466739135 0.017978695576821156 -0.9785225139701821 3.390491678865424
+  position 2.7178200305711746 -0.10501776165289314 1.183566261948134
 }
 TexturedBackground {
 }
@@ -39,7 +39,7 @@ WoodenBox {
   mass 0.8
 }
 E-puck {
-  controller "epuck_go_forward"
+  controller "epuck_avoid_collision"
 }
 Solid {
   translation 0.2 0 0.2
@@ -97,7 +97,7 @@ Solid {
     }
   ]
   name "solid(2)"
-  boundingObject USE kotak
+  boundingObject USE tembok
 }
 Solid {
   translation -0.0154731 0.524342 0.05
@@ -106,7 +106,7 @@ Solid {
     USE tembok
   ]
   name "solid(5)"
-  boundingObject USE kotak
+  boundingObject USE tembok
 }
 Solid {
   translation -0.51 0 0.05
@@ -114,7 +114,7 @@ Solid {
     USE tembok
   ]
   name "solid(4)"
-  boundingObject USE kotak
+  boundingObject USE tembok
 }
 Solid {
   translation 0.51 0 0.05
@@ -122,5 +122,59 @@ Solid {
     USE tembok
   ]
   name "solid(3)"
-  boundingObject USE kotak
+  boundingObject USE tembok
+}
+Solid {
+  translation 0 1 0
+  rotation 0 1 0 1.5708
+  children [
+    DEF GO Group {
+      children [
+        Shape {
+          appearance PBRAppearance {
+            roughness 0.5
+            metalness 0.5
+          }
+          geometry Cylinder {
+            height 0.1
+            radius 0.01
+          }
+        }
+        Transform {
+          translation 0 0 -0.06
+          children [
+            Shape {
+              appearance PBRAppearance {
+              }
+              geometry Sphere {
+                radius 0.03
+                subdivision 2
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0 0 0.05
+          children [
+            Shape {
+              appearance PBRAppearance {
+              }
+              geometry Sphere {
+                radius 0.03
+                subdivision 2
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  name "solid(6)"
+  boundingObject USE GO
+  physics Physics {
+    mass 3
+    centerOfMass [
+      0 0 0.1
+    ]
+  }
 }

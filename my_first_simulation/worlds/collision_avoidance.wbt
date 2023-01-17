@@ -39,7 +39,7 @@ WoodenBox {
   mass 0.8
 }
 E-puck {
-  controller "epuck_go_forward"
+  controller "epuck_avoid_collision"
 }
 Solid {
   translation 0.2 0 0.2
