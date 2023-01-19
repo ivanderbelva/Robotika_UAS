@@ -5,6 +5,5 @@ sceneTreePerspectives: 000000ff00000001000000030000001e000000c0000000fa010000000
 maximizedDockId: -1
 centralWidgetVisible: 1
 orthographicViewHeight: 1
-textFiles: 0 "../my_first_simulation/controllers/four_wheeled_collision_avoidance/four_wheeled_collision_avoidance.py"
-globalOptionalRendering: DistanceSensorRays
+textFiles: 1 "../my_first_simulation/controllers/four_wheeled_collision_avoidance/four_wheeled_collision_avoidance.py" "controllers/supervisor_controller/supervisor_controller.py"
 consoles: Console:All:All
