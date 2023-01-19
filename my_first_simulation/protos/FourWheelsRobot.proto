@@ -1,78 +1,13 @@
 #VRML_SIM R2023a utf8
-
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/Floor.proto"
-EXTERNPROTO "../protos/FourWheelsRobot.proto"
-
-WorldInfo {
-  basicTimeStep 16
-  contactProperties [
-    ContactProperties {
-      material2 "dumbbell"
-      coulombFriction [
-        0
-      ]
-    }
-  ]
-}
-Viewpoint {
-  orientation 0.24929751656489751 -0.05246005605519085 -0.9670050107177629 3.408123110278053
-  position 1.902655266105452 -0.5757804017138812 1.350370073432868
-}
-TexturedBackground {
-}
-TexturedBackgroundLight {
-}
-Floor {
-  size 1 1
-}
-Solid {
-  translation -0.0154731 -0.525658 0.05
-  rotation 0 0 1 -1.5707953071795862
-  children [
-    DEF tembok Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 1
-        roughness 0.5
-        metalness 0
-      }
-      geometry DEF kotak Box {
-        size 0.05 1 0.1
-      }
-    }
-  ]
-  name "solid(2)"
-  boundingObject USE tembok
-}
-Solid {
-  translation -0.0154731 0.524342 0.05
-  rotation 0 0 1 -1.5707953071795862
-  children [
-    USE tembok
-  ]
-  name "solid(5)"
-  boundingObject USE tembok
-}
-Solid {
-  translation -0.51 0 0.05
-  children [
-    USE tembok
-  ]
-  name "solid(4)"
-  boundingObject USE tembok
-}
-Solid {
-  translation 0.51 0 0.05
-  children [
-    USE tembok
-  ]
-  name "solid(3)"
-  boundingObject USE tembok
-}
-Robot {
-  translation 1.8129087887362667e-14 -3.016413667583392e-17 0.03986048918781671
-  rotation -0.0006199973685773369 -0.9970585835331106 0.07664069810622956 9.672831176413535e-15
+PROTO FourWheelsRobot [
+  field SFVec3f    translation  0 0 0
+  field SFRotation rotation     0 0 1 0
+  field SFFloat    bodyMass     1
+]
+{
+  Robot {
+  translation IS translation
+  rotation IS rotation
   children [
     DistanceSensor {
       translation 0.1 0.025 0
@@ -125,7 +60,7 @@ Robot {
       ]
       endPoint DEF wheel1 Solid {
         translation 0.05 0.06 0
-        rotation 1 1.740977994590975e-11 -1.7409843895719742e-11 1.5708
+        rotation 1 3.4819559891819485e-12 -3.4819687791439475e-12 1.5708
         children [
           DEF roda Shape {
             appearance PBRAppearance {
@@ -139,6 +74,8 @@ Robot {
         boundingObject USE roda
         physics DEF wheel_ph Physics {
         }
+        linearVelocity 2.737058232995287e-12 -1.5421688423641736e-14 7.235243684849343e-09
+        angularVelocity -3.8011800788969216e-15 6.844186751262367e-11 1.4173292130135593e-16
       }
     }
     HingeJoint {
@@ -154,12 +91,14 @@ Robot {
       ]
       endPoint DEF wheel2 Solid {
         translation 0.05 -0.06 0
-        rotation -1 1.741026061267915e-11 1.7410324564254738e-11 1.5708
+        rotation -1 3.48205212253583e-12 3.4820649128509473e-12 1.5708
         children [
           USE roda
         ]
         boundingObject USE roda
         physics USE wheel_ph
+        linearVelocity 2.7370042757900675e-12 1.520656892026215e-14 7.235243537644288e-09
+        angularVelocity 8.747954807029022e-15 6.843963167887296e-11 1.4162305078485375e-16
       }
     }
     HingeJoint {
@@ -175,12 +114,14 @@ Robot {
       ]
       endPoint DEF wheel3 Solid {
         translation -0.05 0.06 0
-        rotation 1 1.741072319227916e-11 -1.7410787145553896e-11 1.5708
+        rotation 1 3.4821446384558316e-12 -3.482157429110779e-12 1.5708
         children [
           USE roda
         ]
         boundingObject USE roda
         physics USE wheel_ph
+        linearVelocity 2.736923385959516e-12 -1.53850007614864e-14 7.2351252995403955e-09
+        angularVelocity -3.1640509492615406e-15 6.843789494340857e-11 1.41732797131152e-16
       }
     }
     HingeJoint {
@@ -196,20 +137,22 @@ Robot {
       ]
       endPoint DEF wheel4 Solid {
         translation -0.05 -0.06 0
-        rotation -1 1.741024010612893e-11 1.7410304057629194e-11 1.5708
+        rotation -1 3.482048021225786e-12 3.4820608115258384e-12 1.5708
         children [
           USE roda
         ]
         boundingObject USE roda
         physics USE wheel_ph
+        linearVelocity 2.736971502644068e-12 1.543845759569508e-14 7.235125853130736e-09
+        angularVelocity 5.0923214189828e-16 6.843948689285653e-11 1.4162224023701164e-16
       }
     }
   ]
   boundingObject USE BODY
   physics Physics {
+    density -1
+    mass IS bodyMass
   }
   controller "four_wheeled_collision_avoidance"
-}
-FourWheelsRobot {
-  translation 0 0.2 0.19
+ }
 }
