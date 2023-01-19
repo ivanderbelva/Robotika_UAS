@@ -1,0 +1,3 @@
+[submodule "hacking/Micromouse"]
+	path = hacking/Micromouse
+	url = https://github.com/emstef/Micromouse.git
